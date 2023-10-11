@@ -1,23 +1,21 @@
 class Parent {
-    int x =10;
     Parent(){
         print("In parent constructor");
     }
-    void printData(){
-        print(x);
+    call(){
+        print("call method of parent class");
     }
+
 }
 class Child extends Parent{
-    int x =20;
+
     Child(){
+        super(); 
         print("In child constructor");
     }
-    void dispData(){
-        print(x);
-    }
+
 }
 void main(){
     Child obj = new Child();
-    obj.printData();
-    obj.dispData();
+    obj();
 }

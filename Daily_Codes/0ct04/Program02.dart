@@ -1,23 +1,18 @@
 class Parent {
-    int x =10;
     Parent(){
         print("In parent constructor");
     }
-    void printData(){
-        print(x);
-    }
+
 }
 class Child extends Parent{
-    int x =20;
+
     Child(){
+        //super();   //Error : Superclass has no method named 'call';
         print("In child constructor");
     }
-    void dispData(){
-        print(x);
-    }
+
 }
 void main(){
     Child obj = new Child();
-    obj.printData();
-    obj.dispData();
+    Object o = new Object();
 }
