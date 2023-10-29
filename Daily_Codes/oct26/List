@@ -16,3 +16,13 @@ getRange
 indexOf
 indexWhere
 lastIndexOf
+add
+addAll
+insert
+insertAll
+replaceRange
+remove 
+removeAt
+removeLast
+removeRange
+removeWhere
