@@ -1,0 +1,18 @@
+Properties:
+first
+hashCode
+isEmpty
+isNotEmpty
+iterator
+last
+length
+reversed
+runtimeType
+single
+
+Methods :
+elementAt
+getRange
+indexOf
+indexWhere
+lastIndexOf
