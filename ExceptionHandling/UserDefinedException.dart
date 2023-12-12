@@ -1,5 +1,5 @@
 import 'dart:io';
-class MyException{
+class MyException implements Exception{
     String str = "";
     MyException(this.str);
     String toString(){
