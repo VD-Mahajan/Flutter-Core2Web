@@ -20,7 +20,6 @@ void main(){
             }
             return value;
         }
-        return value;
     });
 
     print(li);
