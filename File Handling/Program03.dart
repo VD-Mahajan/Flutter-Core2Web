@@ -1,18 +1,11 @@
-// Asynchronous code using async and await
-Future<void> asyncExample() async {
-  print('Start');
-  await Future.delayed(Duration(seconds: 2));
-  print('After delay');
-}
+import 'dart:io';
 
-// Synchronous code
-void syncExample() {
-  print('Start');
-  Future.delayed(Duration(seconds: 2));
-  print('After delay');
-}
-
-void main() {
-  asyncExample();
-  syncExample();
+void main() async {
+  File file = new File("temp.txt");
+  print(await file.absolute);             // Gives path of file eg.File: 'D:\Flutter\temp.txt'
+  print(await file.path);                 // Gives name of the file
+  print(await file.lastAccessed());
+  print(await file.lastModified());
+  print(await file.length());
+  print(await file.exists());
 }
