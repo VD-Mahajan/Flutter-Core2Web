@@ -1,5 +1,3 @@
-import 'dart:async';
-
 void main() {
   List<String> players = ["Dhoni", "Rohit", "Virat", "Sachin"];
 
