@@ -5,5 +5,5 @@ class Person {
 }
 
 void main() {
-  Person obj = Person();
+  Person();
 }
