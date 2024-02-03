@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application/quiz_app/mainpage.dart';
 
 void main() {
-  runApp(MyApp5());
+  runApp(const MainPage());
 }
 
 class MyApp extends StatelessWidget {
