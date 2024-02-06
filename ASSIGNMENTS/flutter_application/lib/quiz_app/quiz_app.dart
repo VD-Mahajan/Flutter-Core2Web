@@ -27,18 +27,19 @@ class _MyQuizAppState extends State {
   int questionNumber = 1;
   Color textColor = Colors.black;
   Color buttonColor = Colors.white;
-  Color borderColor = Colors.blueAccent;
+  Color borderColor = Colors.black12;
   String checked = '';
+  int? currentQuestion;
 
   void check(int questionNum, String option) {
     setState(() {
       checked = option;
-      // changeColor(questionNum, option);
+      currentQuestion = questionNum;
     });
   }
 
   Color changeColor(int questionNum, String option) {
-    if (checked == option) {
+    if (checked == option && currentQuestion==questionNumber) {
       return answers[questionNum] == option ? Colors.green : Colors.red;
     } else {
       return borderColor;
