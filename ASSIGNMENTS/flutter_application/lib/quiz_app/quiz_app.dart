@@ -25,18 +25,42 @@ class MyQuizApp extends StatefulWidget {
 class _MyQuizAppState extends State {
   String? question;
   int questionNumber = 1;
-  Color textColor = Colors.white;
-  Color buttonColor =Color.fromARGB(255, 1, 174, 193);
+  Color textColor = Colors.black;
+  Color buttonColor = Colors.white;
+  Color borderColor = Colors.blueAccent;
+  String checked = '';
 
-  bool check(int questionNum, String option) {
-    return option == answers[questionNum];
+  void check(int questionNum, String option) {
+    setState(() {
+      checked = option;
+      // changeColor(questionNum, option);
+    });
   }
 
-  void getQuestion() {
+  Color changeColor(int questionNum, String option) {
+    if (checked == option) {
+      return answers[questionNum] == option ? Colors.green : Colors.red;
+    } else {
+      return borderColor;
+    }
+  }
+
+  void getNextQuestion() {
     setState(() {
       if (questionNumber == 3) {
+        return;
       } else {
         questionNumber++;
+      }
+    });
+  }
+
+  void getPrevQuestion() {
+    setState(() {
+      if (questionNumber == 1) {
+        return;
+      } else {
+        questionNumber--;
       }
     });
   }
@@ -58,86 +82,166 @@ class _MyQuizAppState extends State {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const SizedBox(
-                height: 30,
-              ),
-              Text(
-                'Question $questionNumber/${questions.length}',
-                style: const TextStyle(fontSize: 20),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              Text(
-                'Question $questionNumber: $question',
-                style: const TextStyle(fontSize: 20),
-              ),
-              const SizedBox(
-                height: 40,
-              ),
               Container(
-                width: 300,
-                child: ElevatedButton(
-                  onPressed: () {},
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: buttonColor,
-                  ),
-                  child: Text(
-                    option1,
-                    style: TextStyle(fontSize: 20, color: textColor),
-                  ),
+                child: Column(
+                  children: [
+                    const SizedBox(
+                      height: 30,
+                    ),
+                    Text(
+                      'Question $questionNumber/${questions.length}',
+                      style: const TextStyle(fontSize: 20),
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Text(
+                      'Question $questionNumber: $question',
+                      style: const TextStyle(fontSize: 20),
+                    ),
+                    const SizedBox(
+                      height: 40,
+                    ),
+                    Container(
+                      width: 300,
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                            width: 1.5,
+                            color: changeColor(questionNumber, option1)),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: ElevatedButton(
+                        onPressed: () {
+                          check(questionNumber, option1);
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: buttonColor,
+                          elevation: 0,
+                        ),
+                        child: Text(
+                          option1,
+                          style: TextStyle(fontSize: 20, color: textColor),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    Container(
+                      width: 300,
+                      decoration: BoxDecoration(
+                          border: Border.all(
+                              width: 1.5,
+                              color: changeColor(questionNumber, option2)),
+                          borderRadius: BorderRadius.circular(10)),
+                      child: ElevatedButton(
+                        onPressed: () {
+                          check(questionNumber, option2);
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: buttonColor,
+                          elevation: 0,
+                        ),
+                        child: Text(
+                          option2,
+                          style: TextStyle(fontSize: 20, color: textColor),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    Container(
+                      width: 300,
+                      decoration: BoxDecoration(
+                          border: Border.all(
+                              width: 1.5,
+                              color: changeColor(questionNumber, option3)),
+                          borderRadius: BorderRadius.circular(10)),
+                      child: ElevatedButton(
+                        onPressed: () {
+                          check(questionNumber, option3);
+                        },
+                        style: ElevatedButton.styleFrom(
+                            backgroundColor: buttonColor, elevation: 0),
+                        child: Text(
+                          option3,
+                          style: TextStyle(fontSize: 20, color: textColor),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    Container(
+                      width: 300,
+                      decoration: BoxDecoration(
+                          border: Border.all(
+                              width: 1.5,
+                              color: changeColor(questionNumber, option4)),
+                          borderRadius: BorderRadius.circular(10)),
+                      child: ElevatedButton(
+                        onPressed: () {
+                          check(questionNumber, option4);
+                        },
+                        style: ElevatedButton.styleFrom(
+                            backgroundColor: buttonColor, elevation: 0),
+                        child: Text(
+                          option4,
+                          style: TextStyle(fontSize: 20, color: textColor),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
               Container(
                 width: 300,
-                child: ElevatedButton(
-                  onPressed: () {},
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: buttonColor,
-                  ),
-                  child: Text(
-                    option2,
-                    style: TextStyle(fontSize: 20, color: textColor),
-                  ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      decoration: BoxDecoration(
+                        border: Border.all(width: 2.5, color: Colors.black),
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      child: ElevatedButton(
+                        onPressed: () {
+                          getPrevQuestion();
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: buttonColor,
+                        ),
+                        child: const Icon(
+                          Icons.navigate_before,
+                          color: Colors.black,
+                        ),
+                      ),
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                        border: Border.all(width: 2.5, color: Colors.black),
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      child: ElevatedButton(
+                        onPressed: () {
+                          getNextQuestion();
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: buttonColor,
+                        ),
+                        child: const Icon(Icons.navigate_next,
+                            color: Colors.black),
+                      ),
+                    ),
+                  ],
                 ),
               ),
-              Container(
-                width: 300,
-                child: ElevatedButton(
-                  onPressed: () {},
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: buttonColor,
-                  ),
-                  child: Text(
-                    option3,
-                    style: TextStyle(fontSize: 20, color: textColor),
-                  ),
-                ),
-              ),
-              Container(
-                width: 300,
-                child: ElevatedButton(
-                  onPressed: () {},
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: buttonColor,
-                  ),
-                  child: Text(
-                    option4,
-                    style: TextStyle(fontSize: 20, color: textColor),
-                  ),
-                ),
-              )
             ],
-          )
+          ),
         ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          getQuestion();
-        },
-        backgroundColor: buttonColor,
-        child: const Icon(Icons.navigate_next),
       ),
     );
   }

@@ -15,4 +15,4 @@
     ['Microsoft', 'Amazon', 'Google', 'Biencaps']
   ];
 
-  Map<int, String> answers = {1: 'Framework', 2: 'language', 3: 'Google'};
+Map<int, String> answers = {1: 'Framework', 2: 'language', 3: 'Google'};
